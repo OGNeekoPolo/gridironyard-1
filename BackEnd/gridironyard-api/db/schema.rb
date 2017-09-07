@@ -10,26 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170831191229) do
+ActiveRecord::Schema.define(version: 20170907132400) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "nfl_players", force: :cascade do |t|
+  create_table "nfl_teams", force: :cascade do |t|
     t.string "name"
-    t.string "position"
-    t.string "jersey"
-    t.text "stats"
+    t.string "short_name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "nfl_teams", force: :cascade do |t|
-    t.string "name"
-    t.string "short_name"
-    t.text "schedule"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "nfl_teams_schedules", id: false, force: :cascade do |t|
+    t.bigint "nfl_team_id", null: false
+    t.bigint "schedule_id", null: false
   end
 
   create_table "player_stats", force: :cascade do |t|
@@ -54,6 +49,16 @@ ActiveRecord::Schema.define(version: 20170831191229) do
   create_table "players_users", id: false, force: :cascade do |t|
     t.bigint "user_id", null: false
     t.bigint "player_id", null: false
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string "game_id"
+    t.string "game_day"
+    t.string "game_time"
+    t.string "home_team"
+    t.string "away_team"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
