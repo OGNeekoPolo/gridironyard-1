@@ -19,6 +19,7 @@ class SchedulesController < ApplicationController
 
   def set_schedule
     set_api
+    set_week(0, "week1")
     set_week(1, "week2")
     set_week(2, "week3")
     set_week(3, "week4")
