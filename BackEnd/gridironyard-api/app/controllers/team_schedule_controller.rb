@@ -8,6 +8,7 @@ class TeamScheduleController < ApplicationController
         nfl_team_ids: [@home.id, @away.id]
       )
     end
+    redirect_to teams_path
   end
 
   def index

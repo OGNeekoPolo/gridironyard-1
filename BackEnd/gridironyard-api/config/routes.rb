@@ -17,5 +17,6 @@ Rails.application.routes.draw do
   get '/schedules', to: 'schedules#index', as: 'schedules'
   get '/schedules/set', to: 'schedules#set_schedule'
 
+  get '/team/setup', to: "team_schedule#setup", as: 'setup', format: 'json'
   get '/team_schedules', to: 'team_schedule#index', as: 'teams', format: 'json'
 end
